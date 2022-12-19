@@ -1,33 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   header.h                                           :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abouhmad <abouhmad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/15 22:23:35 by abouhmad          #+#    #+#             */
-/*   Updated: 2022/12/19 20:31:32 by abouhmad         ###   ########.fr       */
+/*   Created: 2022/12/19 20:30:53 by abouhmad          #+#    #+#             */
+/*   Updated: 2022/12/19 20:32:14 by abouhmad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HEADER_H
-# define HEADER_H
+#include "../includes/header.h"
 
-# include <unistd.h>
-# include <stdlib.h>
-# include <stdio.h>
-# include "src/libft/libft.h"
-
-
-typedef struct s_map
+void    ft_error(void)
 {
-    char   *no;
-    char   *so;
-    char   *we;
-    char   *ea;
-    char	*f;
-	char	*c;
-	char	**map;
-}   t_map;
-
-#endif
+    write(1, "Error\n", 6);
+    exit(EXIT_FAILURE);
+}
