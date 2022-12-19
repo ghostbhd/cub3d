@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abouhmad <abouhmad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/15 22:24:24 by abouhmad          #+#    #+#             */
-/*   Updated: 2022/12/19 20:24:52 by abouhmad         ###   ########.fr       */
+/*   Created: 2021/11/06 20:26:39 by abouhmad          #+#    #+#             */
+/*   Updated: 2021/11/08 17:38:13 by abouhmad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/header.h"
+#include "libft.h"
 
-// main for cub3d project
-int	main(int ac, char **av)
+size_t	ft_strlen(const char *s)
 {
-	int	i;
+	size_t	i;
 
-	if (ac == 2)
-	{
-		
-	}
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
 }

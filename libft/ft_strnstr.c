@@ -1,24 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abouhmad <abouhmad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/15 22:24:24 by abouhmad          #+#    #+#             */
-/*   Updated: 2022/12/19 20:24:52 by abouhmad         ###   ########.fr       */
+/*   Created: 2021/11/09 15:50:23 by abouhmad          #+#    #+#             */
+/*   Updated: 2021/11/10 11:03:17 by abouhmad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/header.h"
+#include "libft.h"
 
-// main for cub3d project
-int	main(int ac, char **av)
+char	*ft_strnstr(const char *haystack, const char *needle, size_t loc)
 {
-	int	i;
+	size_t	i;
+	size_t	j;
+	size_t	lenl;
 
-	if (ac == 2)
+	lenl = ft_strlen(needle);
+	i = 0;
+	if (needle[i] == '\0')
+		return ((char *) haystack);
+	while (haystack[i] && loc >= i + lenl)
 	{
-		
+		j = 0;
+		while (haystack[i + j] == needle[j])
+		{
+			if (needle[j + 1] == '\0')
+				return ((char *) haystack + i);
+			j++;
+		}
+		i++;
 	}
+	return (0);
 }

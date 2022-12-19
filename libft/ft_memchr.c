@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abouhmad <abouhmad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/15 22:24:24 by abouhmad          #+#    #+#             */
-/*   Updated: 2022/12/19 20:24:52 by abouhmad         ###   ########.fr       */
+/*   Created: 2021/11/09 15:10:40 by abouhmad          #+#    #+#             */
+/*   Updated: 2021/11/09 15:40:31 by abouhmad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/header.h"
+#include "libft.h"
 
-// main for cub3d project
-int	main(int ac, char **av)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	int	i;
+	const unsigned char	*str;
+	size_t				i;
 
-	if (ac == 2)
+	str = (const unsigned char *) s;
+	i = 0;
+	while (n-- > 0)
 	{
-		
+		if (str[i] == (unsigned char) c)
+			return ((void *)str + i);
+		i++;
 	}
+	return (0);
 }

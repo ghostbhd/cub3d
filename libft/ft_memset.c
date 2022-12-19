@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abouhmad <abouhmad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/15 22:24:24 by abouhmad          #+#    #+#             */
-/*   Updated: 2022/12/19 20:24:52 by abouhmad         ###   ########.fr       */
+/*   Created: 2021/11/06 20:26:19 by abouhmad          #+#    #+#             */
+/*   Updated: 2021/11/08 17:28:21 by abouhmad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/header.h"
+#include "libft.h"
 
-// main for cub3d project
-int	main(int ac, char **av)
+void	*ft_memset(void *b, int c, size_t len)
 {
-	int	i;
+	size_t	i;
+	char	*tab;
 
-	if (ac == 2)
+	tab = (char *) b;
+	i = 0;
+	while (i < len)
 	{
-		
+		tab[i] = (char) c;
+		i++;
 	}
+	return (b);
 }

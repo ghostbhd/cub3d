@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abouhmad <abouhmad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/15 22:24:24 by abouhmad          #+#    #+#             */
-/*   Updated: 2022/12/19 20:24:52 by abouhmad         ###   ########.fr       */
+/*   Created: 2021/11/08 19:59:41 by abouhmad          #+#    #+#             */
+/*   Updated: 2021/11/17 23:23:50 by abouhmad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/header.h"
+#include "libft.h"
 
-// main for cub3d project
-int	main(int ac, char **av)
+char	*ft_strrchr(const char *s, int c)
 {
 	int	i;
 
-	if (ac == 2)
+	i = ft_strlen(s);
+	while (s[i] != (char) c)
 	{
-		
+		if (i == 0 && s[i] != (char) c)
+			return (0);
+		i--;
 	}
+	return ((char *) s + i);
 }

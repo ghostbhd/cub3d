@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abouhmad <abouhmad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/15 22:24:24 by abouhmad          #+#    #+#             */
-/*   Updated: 2022/12/19 20:24:52 by abouhmad         ###   ########.fr       */
+/*   Created: 2021/11/06 20:22:50 by abouhmad          #+#    #+#             */
+/*   Updated: 2021/11/08 17:27:08 by abouhmad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/header.h"
+#include "libft.h"
 
-// main for cub3d project
-int	main(int ac, char **av)
+void	ft_bzero(void *s, size_t n)
 {
-	int	i;
+	size_t	i;
+	char	*tab;
 
-	if (ac == 2)
+	tab = (char *) s;
+	i = 0;
+	while (i < n)
 	{
-		
+		tab[i] = '\0';
+		i++;
 	}
 }

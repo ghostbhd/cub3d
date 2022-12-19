@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abouhmad <abouhmad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abouhmad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/15 22:24:24 by abouhmad          #+#    #+#             */
-/*   Updated: 2022/12/19 20:24:52 by abouhmad         ###   ########.fr       */
+/*   Created: 2021/11/15 16:46:35 by abouhmad          #+#    #+#             */
+/*   Updated: 2021/11/15 17:13:56 by abouhmad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/header.h"
+#include "libft.h"
 
-// main for cub3d project
-int	main(int ac, char **av)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	int	i;
-
-	if (ac == 2)
-	{
-		
-	}
+	if (*lst == 0)
+		*lst = new;
+	else
+		ft_lstlast(*lst)->next = new;
 }

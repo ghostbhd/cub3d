@@ -1,24 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abouhmad <abouhmad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/15 22:24:24 by abouhmad          #+#    #+#             */
-/*   Updated: 2022/12/19 20:24:52 by abouhmad         ###   ########.fr       */
+/*   Created: 2021/11/06 20:25:53 by abouhmad          #+#    #+#             */
+/*   Updated: 2021/11/08 17:28:21 by abouhmad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/header.h"
+#include "libft.h"
 
-// main for cub3d project
-int	main(int ac, char **av)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	int	i;
+	unsigned char		*d;
+	const unsigned char	*s;
 
-	if (ac == 2)
+	d = dst;
+	s = src;
+	if (!dst && !src)
+		return (0);
+	if (dst > src)
 	{
-		
+		while (len-- > 0)
+		{
+			d[len] = s[len];
+		}
 	}
+	else
+	{
+		while (len-- > 0)
+		{
+			*d++ = *s++;
+		}
+	}
+	return (dst);
 }

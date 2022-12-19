@@ -1,24 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abouhmad <abouhmad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/15 22:24:24 by abouhmad          #+#    #+#             */
-/*   Updated: 2022/12/19 20:24:52 by abouhmad         ###   ########.fr       */
+/*   Created: 2021/11/15 23:13:30 by abouhmad          #+#    #+#             */
+/*   Updated: 2021/11/17 01:24:43 by abouhmad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/header.h"
+#include "libft.h"
 
-// main for cub3d project
-int	main(int ac, char **av)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	int	i;
+	t_list	*h;
+	t_list	*p;
 
-	if (ac == 2)
+	if (!lst || !f)
+		return (0);
+	h = NULL;
+	while (lst)
 	{
-		
+		p = ft_lstnew(f(lst->content));
+		if (!p)
+		{
+			ft_lstclear (&h, del);
+			return (0);
+		}
+		ft_lstadd_back(&h, p);
+		lst = lst->next;
 	}
+	return (h);
 }

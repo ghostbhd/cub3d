@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abouhmad <abouhmad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abouhmad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/15 22:24:24 by abouhmad          #+#    #+#             */
-/*   Updated: 2022/12/19 20:24:52 by abouhmad         ###   ########.fr       */
+/*   Created: 2021/11/15 16:39:22 by abouhmad          #+#    #+#             */
+/*   Updated: 2021/11/15 16:43:18 by abouhmad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/header.h"
+#include "libft.h"
 
-// main for cub3d project
-int	main(int ac, char **av)
+int	ft_lstsize(t_list *lst)
 {
-	int	i;
+	size_t	sz;
 
-	if (ac == 2)
+	sz = 0;
+	while (lst)
 	{
-		
+		lst = lst->next;
+		sz++;
 	}
+	return (sz);
 }

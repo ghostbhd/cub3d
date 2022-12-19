@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abouhmad <abouhmad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/15 22:24:24 by abouhmad          #+#    #+#             */
-/*   Updated: 2022/12/19 20:24:52 by abouhmad         ###   ########.fr       */
+/*   Created: 2021/11/10 22:01:28 by abouhmad          #+#    #+#             */
+/*   Updated: 2021/11/10 22:23:41 by abouhmad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/header.h"
+#include "libft.h"
 
-// main for cub3d project
-int	main(int ac, char **av)
+void	*ft_calloc(size_t count, size_t size)
 {
-	int	i;
+	void	*p;
 
-	if (ac == 2)
-	{
-		
-	}
+	p = (void *) malloc(count * size);
+	if (!p)
+		return (0);
+	ft_bzero(p, count * size);
+	return (p);
 }

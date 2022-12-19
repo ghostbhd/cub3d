@@ -1,24 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abouhmad <abouhmad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/15 22:24:24 by abouhmad          #+#    #+#             */
-/*   Updated: 2022/12/19 20:24:52 by abouhmad         ###   ########.fr       */
+/*   Created: 2021/11/10 22:17:44 by abouhmad          #+#    #+#             */
+/*   Updated: 2021/11/13 23:40:01 by abouhmad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/header.h"
+#include "libft.h"
 
-// main for cub3d project
-int	main(int ac, char **av)
+char	*ft_strdup(const char *s1)
 {
-	int	i;
+	char	*str;
+	size_t	i;
+	size_t	len;
 
-	if (ac == 2)
+	len = ft_strlen(s1);
+	str = ft_calloc(len + 1, sizeof(char));
+	if (!str)
+		return (0);
+	i = 0;
+	while (s1[i])
 	{
-		
+		str[i] = s1[i];
+		i++;
 	}
+	str[i] = '\0';
+	return (str);
 }

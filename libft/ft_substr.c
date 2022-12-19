@@ -1,24 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abouhmad <abouhmad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/15 22:24:24 by abouhmad          #+#    #+#             */
-/*   Updated: 2022/12/19 20:24:52 by abouhmad         ###   ########.fr       */
+/*   Created: 2021/11/10 22:35:01 by abouhmad          #+#    #+#             */
+/*   Updated: 2021/11/20 11:52:06 by abouhmad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/header.h"
+#include "libft.h"
 
-// main for cub3d project
-int	main(int ac, char **av)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	int	i;
+	size_t	i;
+	size_t	lens;
+	char	*p;
 
-	if (ac == 2)
+	if (!s)
+		return (0);
+	lens = ft_strlen(s);
+	if (start >= lens)
+		return (ft_strdup(""));
+	if (lens < start + len)
+		len = lens;
+	p = ft_calloc(len + 1, sizeof(char));
+	if (!p)
+		return (0);
+	i = 0;
+	while (s[start + i] && len > 0)
 	{
-		
+		p[i] = s[start + i];
+		i++;
+		len--;
 	}
+	p[i] = '\0';
+	return (p);
 }

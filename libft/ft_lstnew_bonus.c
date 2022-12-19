@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abouhmad <abouhmad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/15 22:24:24 by abouhmad          #+#    #+#             */
-/*   Updated: 2022/12/19 20:24:52 by abouhmad         ###   ########.fr       */
+/*   Created: 2021/11/14 18:36:26 by abouhmad          #+#    #+#             */
+/*   Updated: 2021/11/15 23:34:11 by abouhmad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/header.h"
+#include "libft.h"
 
-// main for cub3d project
-int	main(int ac, char **av)
+t_list	*ft_lstnew(void *content)
 {
-	int	i;
+	t_list	*p;
 
-	if (ac == 2)
-	{
-		
-	}
+	p = (t_list *)malloc(sizeof(t_list));
+	if (!p)
+		return (0);
+	p -> content = content;
+	p -> next = 0;
+	return (p);
 }
