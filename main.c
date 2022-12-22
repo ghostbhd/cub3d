@@ -6,7 +6,7 @@
 /*   By: abouhmad <abouhmad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 22:24:24 by abouhmad          #+#    #+#             */
-/*   Updated: 2022/12/23 00:01:39 by abouhmad         ###   ########.fr       */
+/*   Updated: 2022/12/23 00:13:59 by abouhmad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	main(int ac, char **av)
 {
-	int		i;
 	char	*str;
 	int		fd;
+	t_map	*map;
 
 	if (ac == 2)
 	{
@@ -26,9 +26,6 @@ int	main(int ac, char **av)
 		fd = open(av[1], O_RDONLY);
 		if (fd == -1)
 			ft_error();
-		i = ft_parse(fd);
-		if (i == -1)
-			ft_error();
-		
+		ft_parse(fd, &map);
 	}
 }

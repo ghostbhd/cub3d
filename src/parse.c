@@ -6,18 +6,19 @@
 /*   By: abouhmad <abouhmad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 23:46:02 by abouhmad          #+#    #+#             */
-/*   Updated: 2022/12/23 00:01:22 by abouhmad         ###   ########.fr       */
+/*   Updated: 2022/12/23 00:14:15 by abouhmad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/header.h"
 
-int	ft_parse(int fd)
+void	ft_parse(int fd, t_map **map)
 {
 	char	*line;
 	int		i;
 
 	i = 0;
+	(void) map;
 	line = get_next_line(fd);
 	while (line)
 	{
@@ -42,8 +43,7 @@ int	ft_parse(int fd)
 		else if (ft_strncmp(line, " ", 1) == 0)
 			i++;
 		else
-			return (-1);
+			ft_error();
 		line = get_next_line(fd);
 	}
-	return (i);
 }

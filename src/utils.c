@@ -6,14 +6,14 @@
 /*   By: abouhmad <abouhmad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 20:30:53 by abouhmad          #+#    #+#             */
-/*   Updated: 2022/12/22 23:48:16 by abouhmad         ###   ########.fr       */
+/*   Updated: 2022/12/23 00:07:51 by abouhmad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/header.h"
 
-void    ft_error(void)
+void	ft_error(void)
 {
-    write(2, "Error\n", 6);
-    exit(EXIT_FAILURE);
+	write(2, "Error\n", 6);
+	exit(EXIT_FAILURE);
 }
