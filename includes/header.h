@@ -6,7 +6,7 @@
 /*   By: abouhmad <abouhmad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 22:23:35 by abouhmad          #+#    #+#             */
-/*   Updated: 2022/12/19 20:31:32 by abouhmad         ###   ########.fr       */
+/*   Updated: 2022/12/22 15:54:03 by abouhmad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,17 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include "src/libft/libft.h"
+
+#define BUFFER_SIZE 1
+
+// getline ----------------------------
+char	*ft_strdup_l(char *s);
+char	*ft_strjoin_l(char *s1, char *s2);
+int		ft_strlen_l(char *s);
+char	*ft_substr_l(char *s, int start, int len);
+char	*ft_strchr_l(char *s, int c);
+char	*ft_ret(char *s);
+void	ft_free(char *s);
 
 
 typedef struct s_map

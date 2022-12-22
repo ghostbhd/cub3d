@@ -6,13 +6,12 @@
 /*   By: abouhmad <abouhmad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 22:24:24 by abouhmad          #+#    #+#             */
-/*   Updated: 2022/12/19 20:29:42 by abouhmad         ###   ########.fr       */
+/*   Updated: 2022/12/19 20:33:25 by abouhmad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/header.h"
 
-// main for cub3d project
 int	main(int ac, char **av)
 {
 	int	i;
@@ -23,5 +22,6 @@ int	main(int ac, char **av)
 		str = ft_strrchr(av[1], '.');
 		if (!str && !ft_strncmp(str, ".cub", 5))
 			ft_error();
+		ft_get_paths(av[1]);
 	}
 }
