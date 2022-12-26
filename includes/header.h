@@ -6,7 +6,7 @@
 /*   By: abouhmad <abouhmad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 22:23:35 by abouhmad          #+#    #+#             */
-/*   Updated: 2022/12/25 22:18:51 by abouhmad         ###   ########.fr       */
+/*   Updated: 2022/12/26 11:54:02 by abouhmad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ typedef struct s_map
 	char	*f;
 	char	*c;
 	char	**map;
+	int		p_x;
+	int		p_y;
 	int		angle;
 }			t_map;
 
@@ -44,7 +46,10 @@ char		*ft_ret(char *s);
 char		*get_next_line(int fd);
 
 // parse ----------------------------
-void		ft_parse(int fd, t_map **map);
+void	ft_parse(int fd, t_map **map, char *line);
+
+// check map ------------------------
+void	ft_check_map(char **map);
 
 // utils ----------------------------
 void		ft_error(void);

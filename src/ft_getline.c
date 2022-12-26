@@ -6,12 +6,13 @@
 /*   By: abouhmad <abouhmad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 15:46:16 by abouhmad          #+#    #+#             */
-/*   Updated: 2022/12/22 15:51:50 by abouhmad         ###   ########.fr       */
+/*   Updated: 2022/12/26 11:28:07 by abouhmad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/header.h"
 
+//get line without \n
 char	*ft_ret(char *s)
 {
 	int		i;
@@ -22,7 +23,7 @@ char	*ft_ret(char *s)
 		i++;
 	if (s[i] == '\n')
 	{
-		str = ft_substr_l(s, 0, i + 1);
+		str = ft_substr_l(s, 0, i);
 		return (str);
 	}
 	return (ft_strdup_l(s));
@@ -57,7 +58,7 @@ char	*get_next_line(int fd)
 		return (NULL);
 	if (!str)
 		str = ft_strdup_l("");
-	buff = (char *) malloc(sizeof(char) * BUFFER_SIZE + 1);
+	buff = (char *)malloc(sizeof(char) * BUFFER_SIZE + 1);
 	if (!buff)
 		return (NULL);
 	str = ft_line(str, buff, fd);

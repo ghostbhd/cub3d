@@ -6,7 +6,7 @@
 /*   By: abouhmad <abouhmad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 23:46:02 by abouhmad          #+#    #+#             */
-/*   Updated: 2022/12/26 08:06:42 by abouhmad         ###   ########.fr       */
+/*   Updated: 2022/12/26 11:44:22 by abouhmad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,17 @@ int	n_spc(char *line)
 	return (i);
 }
 
-int is_full(t_map **map)
+int	is_full(t_map **map)
 {
-	if ((*map)->no && (*map)->so && (*map)->we && (*map)->ea && (*map)->f && (*map)->c)
+	if ((*map)->no && (*map)->so && (*map)->we && (*map)->ea && (*map)->f
+		&& (*map)->c)
 		return (1);
 	return (0);
 }
 
 void	ft_fill_map(int fd, t_map **map, char *line)
 {
-	int i;
-	int j;
+	int	i;
 
 	i = 0;
 	(*map)->map = malloc(sizeof(char *) * 100);
@@ -52,14 +52,8 @@ void	ft_fill_map(int fd, t_map **map, char *line)
 	{
 		if (ft_strncmp(line + n_spc(line), "1", 1) == 0)
 		{
-			j = 0;
 			(*map)->map[i] = malloc(sizeof(char) * (ft_strlen(line) - 1));
-			while (line[j] && line[j] != "\n")
-			{
-				(*map)->map[i][j] = line[j];
-				j++;
-			}
-			(*map)->map[i][j] = '\0';
+			(*map)->map[i] = ft_strdup(line);
 		}
 		else
 			ft_error();
@@ -69,13 +63,11 @@ void	ft_fill_map(int fd, t_map **map, char *line)
 	(*map)->map[i] = NULL;
 }
 
-void	ft_parse(int fd, t_map **map)
+void	ft_parse(int fd, t_map **map, char *line)
 {
-	char *line;
-	int i;
+	int		i;
 
 	i = 0;
-	line = get_next_line(fd);
 	while (line)
 	{
 		if (ft_strncmp(line, "NO ", 3) == 0)
@@ -92,6 +84,10 @@ void	ft_parse(int fd, t_map **map)
 			(*map)->c = get_text(line + 2);
 		else if (ft_strncmp(line + n_spc(line), "1", 1) == 0 && is_full(map))
 			ft_fill_map(fd, map, line);
+		else if (line[n_spc(line)] == '\0')
+			;
+		else
+			ft_error();
 		line = get_next_line(fd);
 	}
 }
