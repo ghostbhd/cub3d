@@ -6,7 +6,7 @@
 /*   By: abouhmad <abouhmad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 22:23:35 by abouhmad          #+#    #+#             */
-/*   Updated: 2022/12/26 11:54:02 by abouhmad         ###   ########.fr       */
+/*   Updated: 2022/12/27 08:03:21 by abouhmad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,10 @@ char		*ft_ret(char *s);
 char		*get_next_line(int fd);
 
 // parse ----------------------------
-void	ft_parse(int fd, t_map **map, char *line);
+void		ft_parse(int fd, t_map **map, char *line);
 
 // check map ------------------------
-void	ft_check_map(char **map);
+void		ft_check_map(char **map);
 
 // utils ----------------------------
 void		ft_error(void);

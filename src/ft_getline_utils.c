@@ -6,7 +6,7 @@
 /*   By: abouhmad <abouhmad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 15:47:15 by abouhmad          #+#    #+#             */
-/*   Updated: 2022/12/26 11:23:23 by abouhmad         ###   ########.fr       */
+/*   Updated: 2022/12/27 08:02:42 by abouhmad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ char	*ft_strchr_l(char *s, int c)
 	i = 0;
 	while (s[i])
 	{
-		if (s[i] == (char) c)
+		if (s[i] == (char)c)
 		{
 			str = ft_strdup_l(&s[i + 1]);
 			free(s);
