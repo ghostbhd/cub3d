@@ -6,7 +6,7 @@
 /*   By: abouhmad <abouhmad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 22:23:35 by abouhmad          #+#    #+#             */
-/*   Updated: 2022/12/27 08:03:21 by abouhmad         ###   ########.fr       */
+/*   Updated: 2022/12/29 18:42:58 by abouhmad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <unistd.h>
 
 # define BUFFER_SIZE 1
+# define PI 3.14159265358979323846
 
 // struct ----------------------------
 typedef struct s_map
