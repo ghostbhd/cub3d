@@ -6,7 +6,7 @@
 /*   By: abouhmad <abouhmad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 11:46:02 by abouhmad          #+#    #+#             */
-/*   Updated: 2022/12/27 16:45:25 by abouhmad         ###   ########.fr       */
+/*   Updated: 2022/12/30 16:16:10 by abouhmad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ void	map_is_valid(char **map)
 		j = -1;
 		while (map[i][++j])
 		{
-			if (map[i][j] == ' ' && (map[i][j + 1] == '0' || map[i][j - 1] == '0'
-					|| map[i + 1][j] == '0' || map[i - 1][j] == '0'))
+			if (map[i][j] == ' ' && (map[i][j + 1] == '0' || map[i][j - 1] == '0' 
+				|| map[i + 1][j] == '0' || map[i - 1][j] == '0'))
 				ft_error();
 		}
 	}

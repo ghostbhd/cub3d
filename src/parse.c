@@ -6,7 +6,7 @@
 /*   By: abouhmad <abouhmad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 23:46:02 by abouhmad          #+#    #+#             */
-/*   Updated: 2022/12/26 11:44:22 by abouhmad         ###   ########.fr       */
+/*   Updated: 2022/12/30 16:19:38 by abouhmad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ void	ft_fill_map(int fd, t_map **map, char *line)
 
 	i = 0;
 	(*map)->map = malloc(sizeof(char *) * 100);
+	if (ft_strchr(line, '0'))
+		ft_error();
 	while (line)
 	{
 		if (ft_strncmp(line + n_spc(line), "1", 1) == 0)
@@ -61,6 +63,8 @@ void	ft_fill_map(int fd, t_map **map, char *line)
 		line = get_next_line(fd);
 	}
 	(*map)->map[i] = NULL;
+	if (ft_strchr((*map)->map[i - 1], '0'))
+		ft_error();
 }
 
 void	ft_parse(int fd, t_map **map, char *line)
