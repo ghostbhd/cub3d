@@ -6,7 +6,7 @@
 /*   By: abouhmad <abouhmad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 22:23:35 by abouhmad          #+#    #+#             */
-/*   Updated: 2022/12/29 18:42:58 by abouhmad         ###   ########.fr       */
+/*   Updated: 2023/01/01 15:48:20 by abouhmad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ typedef struct s_map
 	char	*f;
 	char	*c;
 	char	**map;
-	int		p_x;
-	int		p_y;
-	int		angle;
+	double		p_x;
+	double		p_y;
+	double	angle;
 }			t_map;
 
 // getline ----------------------------

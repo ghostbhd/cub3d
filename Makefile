@@ -8,11 +8,11 @@ RM = @rm -rf
 
 AR = @ar -rc
 
-NAME = cub
+NAME = cub3D
 
 LIB = libft/libft.a
 
-sanitize = -fsanitize=address -g && echo "\x1b[36m \n\t-fsanitize=thread:\x1b[32m Used 💥\n"
+sanitize = -fsanitize=address -g && echo "\x1b[36m \n\t-fsanitize=address:\x1b[32m Used 💥\n"
 
 all : $(NAME)
 

@@ -6,12 +6,13 @@
 /*   By: abouhmad <abouhmad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 22:24:24 by abouhmad          #+#    #+#             */
-/*   Updated: 2022/12/29 18:50:32 by abouhmad         ###   ########.fr       */
+/*   Updated: 2023/01/01 17:23:37 by abouhmad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/header.h"
 
+// Test --------------------------------------------
 void	ft_print_map(t_map *map)
 {
 	int	i;
@@ -29,37 +30,40 @@ void	ft_print_map(t_map *map)
 		i++;
 	}
 }
+// -------------------------------------------------
+
+double	get_angle(char c)
+{
+	if (c == 'N')
+		return (3 * PI / 2);
+	else if (c == 'S')
+		return (PI / 2);
+	else if (c == 'W')
+		return (PI);
+	return (0);
+}
 
 void	ft_get_pos(t_map **map)
 {
 	int	j;
 	int	i;
 
-	i = 0;
-	while ((*map)->map[i])
+	i = -1;
+	while ((*map)->map[++i])
 	{
-		j = 0;
-		while ((*map)->map[i][j])
+		j = -1;
+		while ((*map)->map[i][++j])
 		{
 			if ((*map)->map[i][j] == 'N' || (*map)->map[i][j] == 'S'
 				|| (*map)->map[i][j] == 'E' || (*map)->map[i][j] == 'W')
 			{
 				(*map)->p_x = i;
 				(*map)->p_y = j;
-				if ((*map)->map[i][j] == 'N')
-					(*map)->angle = 3 * PI / 2;
-				else if ((*map)->map[i][j] == 'S')
-					(*map)->angle = PI / 2;
-				else if ((*map)->map[i][j] == 'E')
-					(*map)->angle = 0;
-				else if ((*map)->map[i][j] == 'W')
-					(*map)->angle = PI;
+				(*map)->angle = get_angle((*map)->map[i][j]);
 				(*map)->map[i][j] = '0';
 				break ;
 			}
-			j++;
 		}
-		i++;
 	}
 }
 
@@ -82,11 +86,12 @@ int	main(int ac, char **av)
 		line = get_next_line(fd);
 		ft_parse(fd, &map, line);
 		ft_check_map(map->map);
-		ft_get_pos(map);
+		ft_get_pos(&map);
 		ft_print_map(map);
 	}
 }
 
-// white space 
-// split RGB
+// white space (check)
+// split RGB (on going)
 // check if the map is closed
+// segfault line 59 check_map.c >> line 33 check_map.c
