@@ -29,8 +29,8 @@ typedef struct s_map
 	char	*so;
 	char	*we;
 	char	*ea;
-	char	*f;
-	char	*c;
+	int		f[3];
+	int		c[3];
 	char	**map;
 	double		p_x;
 	double		p_y;

@@ -12,15 +12,14 @@
 
 #include "../includes/header.h"
 
-char	*get_text(char *line)
+char	*get_text(char *line, int i)
 {
 	char	*text;
-	int		i;
 
-	i = 0;
 	if (line[i] == ' ')
 		ft_error();
-	text = ft_strdup(line);
+	text = ft_strdup(line + i);
+	free(line);
 	return (text);
 }
 
@@ -67,6 +66,17 @@ void	ft_fill_map(int fd, t_map **map, char *line)
 		ft_error();
 }
 
+void	fill_color(t_map **map, char *str)
+{
+	int	i;
+
+	i = -1;
+	while (str[++i])
+	{
+		
+	}
+}
+
 void	ft_parse(int fd, t_map **map, char *line)
 {
 	int		i;
@@ -75,17 +85,17 @@ void	ft_parse(int fd, t_map **map, char *line)
 	while (line)
 	{
 		if (ft_strncmp(line, "NO ", 3) == 0)
-			(*map)->no = get_text(line + 3);
+			(*map)->no = get_text(line, 3);
 		else if (ft_strncmp(line, "SO ", 3) == 0)
-			(*map)->so = get_text(line + 3);
+			(*map)->so = get_text(line, 3);
 		else if (ft_strncmp(line, "WE ", 3) == 0)
-			(*map)->we = get_text(line + 3);
+			(*map)->we = get_text(line, 3);
 		else if (ft_strncmp(line, "EA ", 3) == 0)
-			(*map)->ea = get_text(line + 3);
+			(*map)->ea = get_text(line, 3);
 		else if (ft_strncmp(line, "F ", 2) == 0)
-			(*map)->f = get_text(line + 2);
+			fill_color(map, get_text(line, 2));
 		else if (ft_strncmp(line, "C ", 2) == 0)
-			(*map)->c = get_text(line + 2);
+			fill_color(map, get_text(line, 2));
 		else if (ft_strncmp(line + n_spc(line), "1", 1) == 0 && is_full(map))
 			ft_fill_map(fd, map, line);
 		else if (line[n_spc(line)] == '\0')
