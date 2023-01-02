@@ -6,7 +6,7 @@
 /*   By: abouhmad <abouhmad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 11:46:02 by abouhmad          #+#    #+#             */
-/*   Updated: 2023/01/01 17:16:00 by abouhmad         ###   ########.fr       */
+/*   Updated: 2023/01/02 17:10:57 by abouhmad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,21 +26,22 @@ void	map_is_valid(char **map)
 	int	count;
 
 	i = -1;
+	count = 0;
 	while (map[++i])
 	{
 		j = -1;
 		while (map[i][++j])
 		{
 			if (map[i][j] == '0' && (map[i][j + 1] == ' ' || map[i][j - 1] == ' '
-				|| map[i + 1][j] == ' ' || map[i - 1][j] == ' '))
+				|| map[i + 1][j] == ' ' || map[i - 1][j] == ' ' || !map[i][j + 1]))
 				ft_error();
 			if (map[i][j] == 'N' || map[i][j] == 'S' || map[i][j] == 'E'
 				|| map[i][j] == 'W')
 				count++;
-			if (count > 1)
-				ft_error();
 		}
 	}
+	if (count != 1)
+		ft_error();
 }
 
 void	ft_check_map(char **map)

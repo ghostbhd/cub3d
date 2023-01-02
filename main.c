@@ -6,7 +6,7 @@
 /*   By: abouhmad <abouhmad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 22:24:24 by abouhmad          #+#    #+#             */
-/*   Updated: 2023/01/01 17:23:37 by abouhmad         ###   ########.fr       */
+/*   Updated: 2023/01/02 17:10:39 by abouhmad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,17 @@ void	ft_print_map(t_map *map)
 	printf("SO %s\n", map->so);
 	printf("WE %s\n", map->we);
 	printf("EA %s\n", map->ea);
-	printf("F %s\n", map->f);
-	printf("C %s\n", map->c);
+	while (i < 3)
+	{
+		printf("F %d\n", map->f[i]);
+		i++;
+	}
+	i = 0;
+	while (i < 3)
+	{
+		printf("C %d\n", map->c[i]);
+		i++;
+	}
 	while (map->map[i])
 	{
 		printf("%s\n", map->map[i]);

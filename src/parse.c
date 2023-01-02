@@ -6,7 +6,7 @@
 /*   By: abouhmad <abouhmad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 23:46:02 by abouhmad          #+#    #+#             */
-/*   Updated: 2022/12/30 16:19:38 by abouhmad         ###   ########.fr       */
+/*   Updated: 2023/01/02 17:11:45 by abouhmad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ int	n_spc(char *line)
 
 int	is_full(t_map **map)
 {
-	if ((*map)->no && (*map)->so && (*map)->we && (*map)->ea && (*map)->f
-		&& (*map)->c)
+	if ((*map)->no && (*map)->so && (*map)->we && (*map)->ea && (*map)->f[0]
+		&& (*map)->c[0] && (*map)->map)
 		return (1);
 	return (0);
 }
@@ -66,20 +66,52 @@ void	ft_fill_map(int fd, t_map **map, char *line)
 		ft_error();
 }
 
-void	fill_color(t_map **map, char *str)
+int count_char(char *str, char c)
 {
 	int	i;
+	int	count;
+
+	i = 0;
+	count = 0;
+	while (str[i])
+	{
+		if (str[i] == c)
+			count++;
+		i++;
+	}
+	return (count);
+}
+
+void	fill_color(t_map **map, char *str, char c)
+{
+	int	i;
+	int k;
 
 	i = -1;
+	k = 0;
+	if (count_char(str, ',') != 2)
+		ft_error();
 	while (str[++i])
 	{
-		
+		if (ft_isdigit(str[i]))
+		{
+			if (c == 'F')
+				(*map)->f[k] = ft_atoi(str + i);
+			else
+				(*map)->c[k] = ft_atoi(str + i);
+			if (ft_atoi(str + i) > 255)
+				ft_error();
+			while (ft_isdigit(str[i]))
+				i++;
+			k++;
+		}
 	}
+	
 }
 
 void	ft_parse(int fd, t_map **map, char *line)
 {
-	int		i;
+	int	i;
 
 	i = 0;
 	while (line)
@@ -93,9 +125,9 @@ void	ft_parse(int fd, t_map **map, char *line)
 		else if (ft_strncmp(line, "EA ", 3) == 0)
 			(*map)->ea = get_text(line, 3);
 		else if (ft_strncmp(line, "F ", 2) == 0)
-			fill_color(map, get_text(line, 2));
+			fill_color(map, get_text(line, 2), 'F');
 		else if (ft_strncmp(line, "C ", 2) == 0)
-			fill_color(map, get_text(line, 2));
+			fill_color(map, get_text(line, 2), 'C');
 		else if (ft_strncmp(line + n_spc(line), "1", 1) == 0 && is_full(map))
 			ft_fill_map(fd, map, line);
 		else if (line[n_spc(line)] == '\0')
