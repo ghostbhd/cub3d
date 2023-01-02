@@ -6,18 +6,11 @@
 /*   By: abouhmad <abouhmad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 11:46:02 by abouhmad          #+#    #+#             */
-/*   Updated: 2023/01/02 17:10:57 by abouhmad         ###   ########.fr       */
+/*   Updated: 2023/01/02 23:11:37 by abouhmad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/header.h"
-
-int	is_wspace(char c)
-{
-	if (c == ' ' || (c >= 9 && c <= 13))
-		return (1);
-	return (0);
-}
 
 void	map_is_valid(char **map)
 {
@@ -32,16 +25,17 @@ void	map_is_valid(char **map)
 		j = -1;
 		while (map[i][++j])
 		{
-			if (map[i][j] == '0' && (map[i][j + 1] == ' ' || map[i][j - 1] == ' '
-				|| map[i + 1][j] == ' ' || map[i - 1][j] == ' ' || !map[i][j + 1]))
-				ft_error();
+			if (map[i][j] == '0' && (map[i][j + 1] == ' '
+			|| map[i][j - 1] == ' ' || map[i + 1][j] == ' '
+			|| map[i - 1][j] == ' ' || !map[i][j + 1]))
+				ft_error("Error\nMap is not closed\n");
 			if (map[i][j] == 'N' || map[i][j] == 'S' || map[i][j] == 'E'
 				|| map[i][j] == 'W')
 				count++;
 		}
 	}
 	if (count != 1)
-		ft_error();
+		ft_error("Error\nMultiple player positions\n");
 }
 
 void	ft_check_map(char **map)
@@ -58,7 +52,7 @@ void	ft_check_map(char **map)
 			if (map[i][j] != '1' && map[i][j] != '0' && map[i][j] != 'N'
 				&& map[i][j] != 'S' && map[i][j] != 'E' && map[i][j] != 'W'
 				&& !is_wspace(map[i][j]))
-				ft_error();
+				ft_error("Error\nInvalid map\n");
 			j++;
 		}
 		i++;

@@ -6,7 +6,7 @@
 /*   By: abouhmad <abouhmad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 22:24:24 by abouhmad          #+#    #+#             */
-/*   Updated: 2023/01/02 17:10:39 by abouhmad         ###   ########.fr       */
+/*   Updated: 2023/01/02 23:24:32 by abouhmad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,22 @@ void	ft_print_map(t_map *map)
 {
 	int	i;
 
-	i = 0;
+	i = -1;
 	printf("NO %s\n", map->no);
 	printf("SO %s\n", map->so);
 	printf("WE %s\n", map->we);
 	printf("EA %s\n", map->ea);
-	while (i < 3)
-	{
-		printf("F %d\n", map->f[i]);
-		i++;
-	}
+	printf("F ");
+	while (++i < 3)
+		printf("%3d ", map->f[i]);
 	i = 0;
+	printf("\nC ");
 	while (i < 3)
 	{
-		printf("C %d\n", map->c[i]);
+		printf("%3d ", map->c[i]);
 		i++;
 	}
+	printf("\n");
 	while (map->map[i])
 	{
 		printf("%s\n", map->map[i]);
@@ -76,6 +76,27 @@ void	ft_get_pos(t_map **map)
 	}
 }
 
+void	ft_init(t_map **map)
+{
+	(*map)->no = NULL;
+	(*map)->so = NULL;
+	(*map)->we = NULL;
+	(*map)->ea = NULL;
+	(*map)->f[0] = -1;
+	(*map)->f[1] = -1;
+	(*map)->f[2] = -1;
+	(*map)->c[0] = -1;
+	(*map)->c[1] = -1;
+	(*map)->c[2] = -1;
+	(*map)->map = NULL;
+	(*map)->p_x = 0;
+	(*map)->p_y = 0;
+	(*map)->angle = 0;
+}
+
+// Errors :
+// Wrong file extension
+// File not found
 int	main(int ac, char **av)
 {
 	char	*str;
@@ -88,19 +109,19 @@ int	main(int ac, char **av)
 	{
 		str = ft_strrchr(av[1], '.');
 		if (!str && !ft_strncmp(str, ".cub", 5))
-			ft_error();
+			ft_error("Error\nWrong file extension\n");
 		fd = open(av[1], O_RDONLY);
 		if (fd == -1)
-			ft_error();
+			ft_error("Error\nFile not found\n");
 		line = get_next_line(fd);
+		ft_init(&map);
 		ft_parse(fd, &map, line);
 		ft_check_map(map->map);
 		ft_get_pos(&map);
 		ft_print_map(map);
 	}
+	else
+		ft_error("Error\nWrong number of arguments\n");
+	system("leaks cub3D");
+	return (0);
 }
-
-// white space (check)
-// split RGB (on going)
-// check if the map is closed
-// segfault line 59 check_map.c >> line 33 check_map.c
