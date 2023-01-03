@@ -6,14 +6,14 @@
 /*   By: abouhmad <abouhmad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 22:24:24 by abouhmad          #+#    #+#             */
-/*   Updated: 2023/01/02 23:24:32 by abouhmad         ###   ########.fr       */
+/*   Updated: 2023/01/03 18:06:24 by abouhmad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/header.h"
 
-// Test --------------------------------------------
-void	ft_print_map(t_map *map)
+// Test show map parsed ----------------------------
+/* void	ft_print_map(t_map *map)
 {
 	int	i;
 
@@ -22,26 +22,20 @@ void	ft_print_map(t_map *map)
 	printf("SO %s\n", map->so);
 	printf("WE %s\n", map->we);
 	printf("EA %s\n", map->ea);
-	printf("F ");
+	printf("F  ");
 	while (++i < 3)
 		printf("%3d ", map->f[i]);
-	i = 0;
-	printf("\nC ");
-	while (i < 3)
-	{
+	i = -1;
+	printf("\nC  ");
+	while (++i < 3)
 		printf("%3d ", map->c[i]);
-		i++;
-	}
 	printf("\n");
-	while (map->map[i])
-	{
+	i = -1;
+	while (map->map[++i])
 		printf("%s\n", map->map[i]);
-		i++;
-	}
-}
+} */
 // -------------------------------------------------
-
-double	get_angle(char c)
+float	get_angle(char c)
 {
 	if (c == 'N')
 		return (3 * PI / 2);
@@ -94,9 +88,6 @@ void	ft_init(t_map **map)
 	(*map)->angle = 0;
 }
 
-// Errors :
-// Wrong file extension
-// File not found
 int	main(int ac, char **av)
 {
 	char	*str;
@@ -118,10 +109,9 @@ int	main(int ac, char **av)
 		ft_parse(fd, &map, line);
 		ft_check_map(map->map);
 		ft_get_pos(&map);
-		ft_print_map(map);
 	}
 	else
 		ft_error("Error\nWrong number of arguments\n");
-	system("leaks cub3D");
 	return (0);
 }
+// ft_print_map(map); show map parsed
