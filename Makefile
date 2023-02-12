@@ -1,4 +1,4 @@
-SRCS =	main.c src/*.c
+SRCS =	main.c parssing/src/*.c raycasting/*.c
 
 CC = @cc
 
@@ -10,24 +10,28 @@ AR = @ar -rc
 
 NAME = cub3D
 
-LIB = libft/libft.a
+LIB = parssing/libft/libft.a
 
 sanitize = -fsanitize=address -g && echo "\x1b[36m \n\t-fsanitize=address:\x1b[32m Used 💥\n"
 
 all : $(NAME)
 
 $(NAME) : ${SRCS}
-	cd libft && make
-	${CC} -pthread ${CFLAGS} $(SRCS) $(LIB) -o $(NAME)
-	@echo "\x1b[32m \x1b[1m \n✅\tMandatory Compele Success\n\t\x1b[0mPrograme name -\x1b[33m ($(NAME))\n\x1b[0m"
+	cd parssing/libft && make
+	${CC} -pthread ${CFLAGS} $(SRCS) $(LIB) -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+	@echo "\x1b[32m \x1b[1m \n✅\tMandatory Compiled Successfully\n\t\x1b[0mProgram named -\x1b[33m ($(NAME))\n\x1b[0m"
 
 clean :
-	cd libft && make clean
-#	@echo "\x1b[31m \x1b[1m \n✅\tDelete [$(NAME)] \x1b[32mSuccess\n\x1b[0m"
+	cd parssing/libft && make clean
 
 fclean : clean
-	cd libft && make fclean
+	cd parssing/libft && make fclean
 	${RM} $(NAME)
 	@echo "\x1b[31m \x1b[1m \n✅\tDelete [$(NAME)] \x1b[32mSuccess\n\x1b[0m"
 
 re : fclean all
+
+run : re
+	make clean
+	./$(NAME) maps/map.cub
+	make fclean

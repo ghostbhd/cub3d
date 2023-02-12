@@ -6,14 +6,13 @@
 /*   By: abouhmad <abouhmad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 22:24:24 by abouhmad          #+#    #+#             */
-/*   Updated: 2023/01/03 18:06:24 by abouhmad         ###   ########.fr       */
+/*   Updated: 2023/01/28 00:34:12 by abouhmad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/header.h"
-
+#include "raycasting/cub3d.h"
 // Test show map parsed ----------------------------
-/* void	ft_print_map(t_map *map)
+/* void	ft_print_map(t_data *map)
 {
 	int	i;
 
@@ -35,7 +34,7 @@
 		printf("%s\n", map->map[i]);
 } */
 // -------------------------------------------------
-float	get_angle(char c)
+double	get_angle(char c)
 {
 	if (c == 'N')
 		return (3 * PI / 2);
@@ -46,7 +45,7 @@ float	get_angle(char c)
 	return (0);
 }
 
-void	ft_get_pos(t_map **map)
+void	ft_get_pos(t_data **map)
 {
 	int	j;
 	int	i;
@@ -60,8 +59,8 @@ void	ft_get_pos(t_map **map)
 			if ((*map)->map[i][j] == 'N' || (*map)->map[i][j] == 'S'
 				|| (*map)->map[i][j] == 'E' || (*map)->map[i][j] == 'W')
 			{
-				(*map)->p_x = i;
-				(*map)->p_y = j;
+				(*map)->p_y = i + 0.5;
+				(*map)->p_x = j + 0.5;
 				(*map)->angle = get_angle((*map)->map[i][j]);
 				(*map)->map[i][j] = '0';
 				break ;
@@ -70,7 +69,7 @@ void	ft_get_pos(t_map **map)
 	}
 }
 
-void	ft_init(t_map **map)
+void	ft_init(t_data **map)
 {
 	(*map)->no = NULL;
 	(*map)->so = NULL;
@@ -88,14 +87,24 @@ void	ft_init(t_map **map)
 	(*map)->angle = 0;
 }
 
+void	ft_get_len(t_data *map)
+{
+	int	i;
+
+	i = 0;
+	while (map->map[i])
+		i++;
+	map->len = i;
+}
+
 int	main(int ac, char **av)
 {
 	char	*str;
 	char	*line;
 	int		fd;
-	t_map	*map;
+	t_data	*map;
 
-	map = malloc(sizeof(t_map));
+	map = malloc(sizeof(t_data));
 	if (ac == 2)
 	{
 		str = ft_strrchr(av[1], '.');
@@ -109,9 +118,10 @@ int	main(int ac, char **av)
 		ft_parse(fd, &map, line);
 		ft_check_map(map->map);
 		ft_get_pos(&map);
+		ft_get_len(map);
+		create_window(map);
 	}
 	else
 		ft_error("Error\nWrong number of arguments\n");
 	return (0);
 }
-// ft_print_map(map); show map parsed
