@@ -3,8 +3,8 @@ SO ./img/golden-pattern.xpm
 WE ./img/pngtree.xpm
 EA ./img/seamless.xpm
 
-F 147, 155, 98
-C 255, 255, 250
+F 147, 120, 120
+C 80, 210, 225
 
 
          1111111111111111111111111   1
